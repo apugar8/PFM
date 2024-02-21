@@ -1,6 +1,6 @@
 
 
-require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate", "esri/widgets/BasemapGallery", "esri/widgets/ScaleBar", "esri/widgets/Compass", "esri/widgets/AreaMeasurement2D"], function(Map, MapView, Graphic, PopupTemplate, BasemapGallery, ScaleBar, Compass, AreaMeasurement2D) {
+require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate", "esri/layers/FeatureLayer", "esri/widgets/BasemapToggle", "esri/widgets/ScaleBar", "esri/widgets/Compass", "esri/widgets/AreaMeasurement2D"], function(Map, MapView, Graphic, PopupTemplate, FeatureLayer, BasemapToggle, ScaleBar, Compass, AreaMeasurement2D) {
     
   var map = new Map({
     basemap: "topo-vector" 
@@ -13,6 +13,24 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
     center: [window.estaciones[0].longitud, window.estaciones[0].latitud] // Centra el mapa en la primera estación
   });
 
+  const limite = new FeatureLayer({
+    url: "https://services5.arcgis.com/zZdalPw2d0tQx8G1/arcgis/rest/services/LimitesAreadeEstudi_Dissolve/FeatureServer",
+    renderer: {
+      type: "simple",
+      symbol: {
+        type: "simple-fill",
+        color: [0, 0, 0, 0],
+        outline: {
+          color: "#5b5b56",
+          width: 1.7
+        }
+      }
+    }
+  });
+
+  map.add(limite);
+
+ 
   // Añadir un marcador para cada estación
   for (let estacion of window.estaciones) {
     var point = {
@@ -23,10 +41,10 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
 
     var simpleMarkerSymbol = {
       type: "simple-marker",
-      color: [226, 119, 40], 
+      color: "#1885db",
       outline: {
-        color: [255, 255, 255], 
-        width: 1  
+        color: "#181818", 
+        width: 0.5  
       }
     };
 
@@ -45,16 +63,15 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
     view.graphics.add(pointGraphic);
   }
 
+
   // Añadir un widget para cambiar el mapa base
 
-  var basemapGallery = new BasemapGallery({
-    view: view
+  var basemapToggle = new BasemapToggle({
+    view: view,
+    nextBasemap: "dark-gray-vector"
   });
 
-  view.ui.add(basemapGallery, {
-    position: "top-right"
-  });
-
+  view.ui.add(basemapToggle, "top-right");
 
   // Añadir una barra de escala
 
