@@ -23,19 +23,19 @@ window.estaciones = [
     { nombre: 'Estación Agricultor Picassent 13 (Cítricos - frutales de regadío)', latitud: 39.302997, longitud: -0.432646, temperaturaMin: 3, temperaturaMax: 22, precipitacion: 0, viento: 4 },
     { nombre: 'Estación Agricultor Picassent 14 (Cítricos)', latitud: 39.349805, longitud: -0.495389, temperaturaMin: 5, temperaturaMax: 22, precipitacion: 0, viento: 0 },
     { nombre: 'Estación Agricultor Picassent 15 (Tieras arables de regadío)', latitud: 39.325708, longitud: -0.433805, temperaturaMin: 3, temperaturaMax: 19, precipitacion: 0, viento: 1 },
-  ];
+  ]
   
   // Generar datos meteorológicos aleatorios
   function generarDatosMeteorologicos() {
     for (let estacion of window.estaciones) {
-      estacion.temperaturaMin = Math.random() * (7 - 0) + 0; 
-      estacion.temperaturaMax = Math.random() * (30 - 15) + 15; 
-      estacion.viento = Math.random() * (60 - 0) + 0;
-      estacion.precipitacion = Math.random() * 50; 
+      estacion.temperaturaMin = Math.random() * (7 - 0) + 0 
+      estacion.temperaturaMax = Math.random() * (30 - 15) + 15
+      estacion.viento = Math.random() * (60 - 0) + 0
+      estacion.precipitacion = Math.random() * 50 
     }
   }
   
   // Actualizar los datos meteorológicos diariamente
-  setInterval(generarDatosMeteorologicos, 24 * 60 * 60 * 1000); 
+  setInterval(generarDatosMeteorologicos, 24 * 60 * 60 * 1000) 
   
-  generarDatosMeteorologicos();
+  generarDatosMeteorologicos()

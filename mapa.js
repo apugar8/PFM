@@ -4,14 +4,14 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
     
   var map = new Map({
     basemap: "topo-vector" 
-  });
+  })
 
   var view = new MapView({
     container: "map",
     map: map,
     zoom: 12,
     center: [-0.45988, 39.36011]
-  });
+  })
 
   const limite = new FeatureLayer({
     url: "https://services5.arcgis.com/zZdalPw2d0tQx8G1/arcgis/rest/services/LimitesAreadeEstudi_Dissolve/FeatureServer",
@@ -26,9 +26,9 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
         }
       }
     }
-  });
+  })
 
-  map.add(limite);
+  map.add(limite)
 
  
   // Añadir un marcador para cada estación
@@ -37,7 +37,7 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
       type: "point",
       longitude: estacion.longitud,
       latitude: estacion.latitud
-    };
+    }
 
     var simpleMarkerSymbol = {
       type: "simple-marker",
@@ -46,7 +46,7 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
         color: "#181818", 
         width: 0.5  
       }
-    };
+    }
 
     var popupTemplate = new PopupTemplate({
       title: estacion.nombre,
@@ -54,15 +54,15 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
                "Temperatura max.: " + estacion.temperaturaMax.toFixed(2) + "°C<br>" +
                "Precipitación: " + estacion.precipitacion.toFixed(2) + "mm<br>" +
                 "Viento: " + estacion.viento.toFixed(2) + "km/h"
-    });
+    })
 
     var pointGraphic = new Graphic({
       geometry: point,
       symbol: simpleMarkerSymbol,
       popupTemplate: popupTemplate
-    });
+    })
 
-    view.graphics.add(pointGraphic);
+    view.graphics.add(pointGraphic)
   }
 
 
@@ -71,9 +71,12 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
   var basemapToggle = new BasemapToggle({
     view: view,
     nextBasemap: "satellite"
-  });
+  })
 
-  view.ui.add(basemapToggle, "top-right");
+  view.ui.add(basemapToggle, {
+    position: "top-right",
+  })
+  
 
   // Añadir una barra de escala
 
@@ -82,31 +85,31 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
     unit: "metric",
     style: "ruler",
     color: "black",
-  });
+  })
 
   view.ui.add(escala, {
     position: "bottom-left"
-  });
+  })
 
 
   // Añadir un widget para orientar el mapa
 
   var norte = new Compass({
     view: view
-  });
+  })
 
   view.ui.add(norte, {
     position: "top-left"
-  });
+  })
 
 
   // Añadir un widget para medir áreas
 
   var medir2D = new AreaMeasurement2D({
     view: view
-  });
+  })
 
   view.ui.add(medir2D, {
     position: "bottom-right"
-  });
-});
+  })
+})
