@@ -50,8 +50,10 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
 
     var popupTemplate = new PopupTemplate({
       title: estacion.nombre,
-      content: "Temperatura: " + estacion.temperatura.toFixed(2) + "°C<br>" +
-               "Precipitación: " + estacion.precipitacion.toFixed(2) + "mm"
+      content: "Temperatura min.: " + estacion.temperaturaMin.toFixed(2) + "°C<br>" +
+               "Temperatura max.: " + estacion.temperaturaMax.toFixed(2) + "°C<br>" +
+               "Precipitación: " + estacion.precipitacion.toFixed(2) + "mm<br>" +
+                "Viento: " + estacion.viento.toFixed(2) + "km/h"
     });
 
     var pointGraphic = new Graphic({
