@@ -9,8 +9,8 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
   var view = new MapView({
     container: "map",
     map: map,
-    zoom: 11,
-    center: [window.estaciones[0].longitud, window.estaciones[0].latitud] // Centra el mapa en la primera estación
+    zoom: 12,
+    center: [-0.45988, 39.36011]
   });
 
   const limite = new FeatureLayer({
@@ -21,8 +21,8 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
         type: "simple-fill",
         color: [0, 0, 0, 0],
         outline: {
-          color: "#5b5b56",
-          width: 1.7
+          color: "#c70101",
+          width: 1.5
         }
       }
     }
@@ -41,7 +41,7 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
 
     var simpleMarkerSymbol = {
       type: "simple-marker",
-      color: "#1885db",
+      color: "#1bc6f2",
       outline: {
         color: "#181818", 
         width: 0.5  
@@ -70,7 +70,7 @@ require(["esri/Map", "esri/views/MapView", "esri/Graphic", "esri/PopupTemplate",
 
   var basemapToggle = new BasemapToggle({
     view: view,
-    nextBasemap: "dark-gray-vector"
+    nextBasemap: "satellite"
   });
 
   view.ui.add(basemapToggle, "top-right");
