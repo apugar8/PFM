@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>ArcGIS Feature Layer</title>
+
+        <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/dark/main.css">
+        <script src="https://js.arcgis.com/4.15/"></script>
+        <script src="mapa.js"></script>
+        <script src="lista.js"></script>
+
+        <style src="estilo.css"></style>
+
+    </head>
+    <body>
+        <div id="nav">
+        <a href="#" onclick="showTab('listDiv'); return false;">Lista de estaciones</a>
+        <a href="#" onclick="showTab('viewDiv'); return false;">Mapa</a>
+        </div>
+        <div id="content">
+        <div id="listDiv" class="active"></div>
+        <div id="viewDiv"></div>
+        </div>
+    
+        
+
+    </body>
+
+</html>
