@@ -4,7 +4,7 @@ import schedule
 from arcgis.gis import GIS
 from arcgis.features import FeatureLayer
 
-gis = GIS("https://esmastergis.maps.arcgis.com/home/index.html", "apuigcerver.mg", "Sequier.8")
+gis = GIS("https://esmastergis.maps.arcgis.com/home/index.html", "apuigcerver.mg", "Gis.12345")
 
 sub_feature_layer = FeatureLayer("https://services5.arcgis.com/zZdalPw2d0tQx8G1/arcgis/rest/services/Estaciones_Meteorol%C3%B3gicas_WFL1/FeatureServer/0", gis)
 
